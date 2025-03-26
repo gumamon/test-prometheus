@@ -6,6 +6,7 @@ A simple hands-on guide to deploy Prometheus on Kubernetes and verify it's worki
 ## Tool Installation  
 Make sure the following tools are installed:
 
+- [Install `Docker`](https://docs.docker.com/engine/install/)
 - [Install `kind`](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)  
 - [Install `kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
 - [Install `helm`](https://helm.sh/docs/intro/install/)  
@@ -17,6 +18,11 @@ Make sure the following tools are installed:
 Create a Kubernetes cluster with Kind:
 ```bash
 kind create cluster --name gumamon --config kind.yaml
+```
+
+Verify the Kind cluster
+```bash
+kind get clusters
 ```
 
 Switch the current context to the new cluster:
@@ -43,6 +49,17 @@ helmfile template
 Apply the manifests:
 ```bash
 helmfile sync
+```
+```
+...
+
+UPDATED RELEASES:
+NAME                        NAMESPACE       CHART                             VERSION   DURATION
+ingress-config-prometheus   prometheus      ./ingress-config                  1.0.0           6s
+ingress-config-default      default         ./ingress-config                  1.0.0           7s
+go-metrics-sample           default         ./go-metrics-sample               0.1.0           6s
+prometheus                  prometheus      prometheus-community/prometheus   27.7.0         15s
+ingress-nginx               ingress-nginx   ingress-nginx/ingress-nginx       4.12.1        1m5s
 ```
 
 ### Name Resolution Settings  
