@@ -62,6 +62,23 @@ Add entries like:
 > - If Kind is running inside a virtual machine, use the VM’s IP address instead of `127.0.0.1`.  
 > - The `/etc/hosts` path shown here is an example for macOS/Linux systems.
 
+### Verify Operation  
+Check if the sample application is running:  
+```
+go-metrics-sample.example.com/ping
+```
+
+Access the Prometheus server to check configuration and metrics:  
+```
+prometheus-server.example.com
+```
+
+### Clean Up the Test Environment  
+To delete the Kind cluster:  
+```
+kind delete cluster --name gumamon
+```
+
 ## Versions  
 - Kind: v0.27.0  
 - Helm: v3.17.2  
