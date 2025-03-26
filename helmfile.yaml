@@ -17,7 +17,7 @@ releases:
     createNamespace: true
     chart: ./ingress
     values:
-      - ingress/values/prometheus.yaml
+      - ingress/values.yaml
   - name: prometheus
     namespace: prometheus
     chart: prometheus-community/prometheus
@@ -25,3 +25,8 @@ releases:
     version: 27.7.0
     values:
       - prometheus/values.yaml
+  - name: go-metrics-sample
+    namespace: default
+    chart: ./go-metrics-sample
+    values:
+      - go-metrics-sample/values.yaml
