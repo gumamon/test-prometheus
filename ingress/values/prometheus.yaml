@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  name: prometheus-server
+  namespace: prometheus
+  className: nginx
+  annotations: {}
+  hosts:
+    - host: prometheus-server.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+          serviceName: prometheus-server 
+          servicePort: 80
+  tls: []
