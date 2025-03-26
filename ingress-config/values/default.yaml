@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  name: go-metrics-sample
+  namespace: default
+  className: nginx
+  annotations: {}
+  hosts:
+    - host: go-metrics-sample.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+          serviceName: go-metrics-sample
+          servicePort: 8080
+  tls: []

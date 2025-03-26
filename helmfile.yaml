@@ -12,12 +12,17 @@ releases:
     version: 4.12.1
     values:
       - ingress-nginx/values.yaml
-  - name: ingress
+  - name: ingress-config-prometheus
     namespace: prometheus
     createNamespace: true
-    chart: ./ingress
+    chart: ./ingress-config
     values:
-      - ingress/values.yaml
+      - ingress-config/values/prometheus.yaml
+  - name: ingress-config-default
+    namespace: default
+    chart: ./ingress-config
+    values:
+      - ingress-config/values/default.yaml
   - name: prometheus
     namespace: prometheus
     chart: prometheus-community/prometheus
