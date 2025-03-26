@@ -1,59 +1,70 @@
 # test-prometheus
-# Summary
+
+## Summary  
 A simple hands-on guide to deploy Prometheus on Kubernetes and verify it's working correctly.
 
-# Tool installation
-* [Install `kind`](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-* [Install `kubectl`](https://kubernetes.io/ja/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)
-* [Install `helm`](https://helm.sh/ja/docs/intro/install/)
-* [Install helmfile](https://github.com/helmfile/helmfile)
+## Tool Installation  
+Make sure the following tools are installed:
 
-# Setup
-## Create cluster
-create cluster
-```
+- [Install `kind`](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)  
+- [Install `kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
+- [Install `helm`](https://helm.sh/docs/intro/install/)  
+- [Install `helmfile`](https://github.com/helmfile/helmfile)
+
+## Setup
+
+### Create Cluster  
+Create a Kubernetes cluster with Kind:
+```bash
 kind create cluster --name gumamon --config kind.yaml
 ```
-change context
-```
+
+Switch the current context to the new cluster:
+```bash
 kubectl config use-context kind-gumamon
 ```
-check context
+
+Verify the current context:
+```bash
+kubectl config get-contexts
 ```
-kubectl config get-contexts 
-```
-get namespace from cluster 
-```
+
+Check available namespaces:
+```bash
 kubectl get ns
 ```
 
-## Deploy manifests
-dryrun
-```
+### Deploy Manifests  
+Preview what will be deployed:
+```bash
 helmfile template
 ```
-deploy
-```
+
+Apply the manifests:
+```bash
 helmfile sync
 ```
 
-## Name resolution settings
-```
+### Name Resolution Settings  
+Edit your `/etc/hosts` file:
+```bash
 sudo vim /etc/hosts
 ```
+
+Add entries like:
 ```
-# example
+# Example
 127.0.0.1    prometheus-server.example.com
 127.0.0.1    go-metrics-sample.example.com
 ```
-> [!NOTE]
-> * If Kind is running on a virtual machine, please set the IP address of the virtual machine.
-> * `/etc/hosts` is an example of a MAC, etc.
 
+> **Note**  
+> - If Kind is running inside a virtual machine, use the VM’s IP address instead of `127.0.0.1`.  
+> - The `/etc/hosts` path shown here is an example for macOS/Linux systems.
 
-# versions
-* kind: version 0.27.0
-* helm: v3.17.2
-* helmfile: 0.171.0
-* kubernetes: v1.32.2
-* kubectl: v1.32.2
+## Versions  
+- Kind: v0.27.0  
+- Helm: v3.17.2  
+- Helmfile: v0.171.0  
+- Kubernetes: v1.32.2  
+- Kubectl: v1.32.2
