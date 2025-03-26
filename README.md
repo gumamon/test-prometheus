@@ -64,18 +64,14 @@ Add entries like:
 
 ### Verify Operation  
 Check if the sample application is running:  
-```
-go-metrics-sample.example.com/ping
-```
+- http://go-metrics-sample.example.com/ping
 
 Access the Prometheus server to check configuration and metrics:  
-```
-prometheus-server.example.com
-```
+- http://prometheus-server.example.com
 
 ### Clean Up the Test Environment  
 To delete the Kind cluster:  
-```
+```bash
 kind delete cluster --name gumamon
 ```
 
