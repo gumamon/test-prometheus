@@ -1,0 +1,37 @@
+repositories:
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts 
+
+releases:
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    createNamespace: true
+    chart: ingress-nginx/ingress-nginx
+    version: 4.12.1
+    values:
+      - ingress-nginx/values.yaml
+  - name: ingress-config-prometheus
+    namespace: prometheus
+    createNamespace: true
+    chart: ./ingress-config
+    values:
+      - ingress-config/values/prometheus.yaml
+  - name: ingress-config-default
+    namespace: default
+    chart: ./ingress-config
+    values:
+      - ingress-config/values/default.yaml
+  - name: prometheus
+    namespace: prometheus
+    chart: prometheus-community/prometheus
+    createNamespace: true
+    version: 27.7.0
+    values:
+      - prometheus/values.yaml
+  - name: go-metrics-sample
+    namespace: default
+    chart: ./go-metrics-sample
+    values:
+      - go-metrics-sample/values.yaml

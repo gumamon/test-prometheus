@@ -1,0 +1,9 @@
+server:
+  retention: "1d"
+  retentionSize: "1GB"
+
+alertmanager:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
