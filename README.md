@@ -1,8 +1,12 @@
 # test-prometheus
 
-## Summary  
+# Summary  
 A simple hands-on guide to deploy Prometheus on Kubernetes and verify it's working correctly.
 
+# Hands-On Diagram
+![Hands-On Diagram](./docs/hands-on-diagram.drawio.svg)
+
+# Getting Started
 ## Tool Installation  
 Make sure the following tools are installed:
 
